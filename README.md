@@ -29,15 +29,15 @@ vanilla-sky-bot/
 │   │   │   └── flights.ts
 │   │   ├── index.ts
 │   │   ├── server.ts
+│   │   └── Dockerfile
 │   ├── bot/
-│   │   ├── bot.ts
 │   │   ├── handlers/
 │   │   │   └── observe.ts
 │   │   │   └── flights.ts
 │   │   ├── index.ts
+│   │   └── Dockerfile
 ├── .env
 ├── docker-compose.yml
-├── Dockerfile
 ├── package.json
 ├── tsconfig.json
 ```
