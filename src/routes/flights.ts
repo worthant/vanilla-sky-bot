@@ -31,12 +31,11 @@ router.get('/:from/:to', async (req, res) => {
 	try {
 		const flights = await AppDataSource.getRepository(Flight).find({
 			where: { from, to },
-		})
+		});
 		res.json(flights);
-		
-	} catch(error) {
-		console.error("Error fetching flights: ", error);
-		res.status(500).json({error: "Internal server error"});
+	} catch (error) {
+		console.error('Error fetching flights: ', error);
+		res.status(500).json({ error: 'Internal server error' });
 	}
 });
 
@@ -50,11 +49,16 @@ const fetchAndStoreFlights = async () => {
 					const response = await axios.get(url);
 					const dates = response.data.from;
 					for (const date of dates) {
-						const flight = new Flight();
-						flight.from = departure.name;
-						flight.to = arrival.name;
-						flight.date = date;
-						await flightRepository.save(flight);
+						const existingFlight = await flightRepository.findOne({
+							where: { from: departure.name, to: arrival.name, date },
+						});
+						if (!existingFlight) {
+							const flight = new Flight();
+							flight.from = departure.name;
+							flight.to = arrival.name;
+							flight.date = date;
+							await flightRepository.save(flight);
+						}
 					}
 				}
 			}
