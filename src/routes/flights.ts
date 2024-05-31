@@ -26,6 +26,20 @@ router.get('/', async (req, res) => {
 	}
 });
 
+router.get('/:from/:to', async (req, res) => {
+	const { from, to } = req.params;
+	try {
+		const flights = await AppDataSource.getRepository(Flight).find({
+			where: { from, to },
+		})
+		res.json(flights);
+		
+	} catch(error) {
+		console.error("Error fetching flights: ", error);
+		res.status(500).json({error: "Internal server error"});
+	}
+});
+
 const fetchAndStoreFlights = async () => {
 	const flightRepository = AppDataSource.getRepository(Flight);
 	try {
