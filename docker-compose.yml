@@ -33,7 +33,7 @@ services:
 
   bot:
     build:
-      context: /src/bot
+      context: ./src/bot
     container_name: bot
     depends_on:
       postgres:
