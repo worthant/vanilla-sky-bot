@@ -19,8 +19,8 @@ Check it by yourself: [t.me/ticket_checker_vanilla_bot](https://t.me/ticket_chec
 
 ```
 vanilla-sky-bot/
-├── src/
-│   ├── api/
+├── api/
+│   ├── src/
 │   │   ├── db/
 │   │   │   └── database.ts
 │   │   ├── entity/
@@ -28,16 +28,22 @@ vanilla-sky-bot/
 │   │   ├── routes/
 │   │   │   └── flights.ts
 │   │   ├── index.ts
-│   │   ├── server.ts
-│   │   └── Dockerfile
-│   ├── bot/
+│   │   └── server.ts
+│   ├── package-lock.json
+│   ├── package.json
+│   ├── tsconfig.json
+│   └── Dockerfile
+├── bot/
+│   ├── src/
 │   │   ├── handlers/
 │   │   │   └── observe.ts
 │   │   │   └── flights.ts
-│   │   ├── index.ts
-│   │   └── Dockerfile
+│   │   └── index.ts
+│   ├── package-lock.json
+│   ├── package.json
+│   ├── tsconfig.json
+│   └── Dockerfile
 ├── .env
 ├── docker-compose.yml
-├── package.json
-├── tsconfig.json
+└── README.md
 ```
