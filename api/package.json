@@ -1,15 +1,13 @@
 {
-  "name": "vanilla-sky-bot",
+  "name": "vanilla-sky-api",
   "version": "1.0.0",
-  "main": "index.js",
+  "main": "dist/index.js",
   "scripts": {
-    "start": "ts-node src/index.ts",
+    "start": "node dist/index.js",
     "build": "tsc",
     "dev": "ts-node-dev src/index.ts"
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
+  "author": "worthant",
   "description": "",
   "devDependencies": {
     "@types/express": "^4.17.21",
@@ -24,7 +22,6 @@
     "express": "^4.19.2",
     "pg": "^8.11.5",
     "reflect-metadata": "^0.2.2",
-    "telegraf": "^4.16.3",
     "typegram": "^5.2.0",
     "typeorm": "^0.3.20"
   }

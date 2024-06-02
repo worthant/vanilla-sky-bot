@@ -16,6 +16,15 @@ const cities = [
 	{ name: 'Aktau', code: '8' },
 ];
 
+router.get('/cities', async (req, res) => {
+	try {
+		res.json(cities);
+	} catch (err) {
+		console.log(`Error sending cities array: `, err);
+		res.status(500).json({ error: `Internal server error` });
+	}
+});
+
 router.get('/', async (req, res) => {
 	try {
 		const flights = await AppDataSource.getRepository(Flight).find();
@@ -29,9 +38,12 @@ router.get('/', async (req, res) => {
 router.get('/:from/:to', async (req, res) => {
 	const { from, to } = req.params;
 	try {
+		console.log(`${from}, ${to}`);
+		console.log(await AppDataSource.getRepository(Flight).find());
 		const flights = await AppDataSource.getRepository(Flight).find({
 			where: { from, to },
 		});
+		console.log(flights)
 		res.json(flights);
 	} catch (error) {
 		console.error('Error fetching flights: ', error);
